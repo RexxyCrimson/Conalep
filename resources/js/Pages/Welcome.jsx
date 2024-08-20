@@ -12,14 +12,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome" />
-
-     
-            <main className=' flex'>
             <Menu>
                 <Menu.Header></Menu.Header>
                 <Menu.Body></Menu.Body>
             </Menu>
-
+     
+            <main className='flex container mx-auto'>
                 <div style={{
                     flexShrink: 0,
                     width: '1.5rem',
