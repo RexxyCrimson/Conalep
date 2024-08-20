@@ -18,18 +18,18 @@ const Menu = ({ children }) => {
 const Header = () => {
     const { open, setOpen } = useContext(MenuContext);
     return (
-        <div className="p-3" style={{ width: '4rem' }}>
+        <div className="p-3" style={{ border: 'thin solid black' }}>
             {/* Botón para colocar menú */}
-            <button  onClick={() => setOpen(true)} >
+            <button onClick={() => setOpen(true)} >
                 <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.361694 0.138306V5.12014H35.0851V0.138306H0.361694ZM0.361694 14.9344V19.9162H35.0851V14.9344H0.361694ZM0.361694 29.8799V34.8617H35.0851V29.8799H0.361694Z" fill="black" />
                 </svg>
-            </button>            
+            </button>
         </div>
     )
 }
 
-const Body = ({ auth }) => {
+const Body = ({ children }) => {
     const { open, setOpen } = useContext(MenuContext);
 
     return (
@@ -44,7 +44,7 @@ const Body = ({ auth }) => {
                 leaveFrom="transform translate-x-0"
                 leaveTo="transform -translate-x-full"
             >
-                <nav className='navbar flex flex-col flex-none absolute dark:bg-black nowgrap w-full sm:max-w-80' style={{
+                <nav className='navbar flex flex-col flex-none fixed dark:bg-black w-full sm:max-w-80' style={{
                     top: 0,
                     bottom: 0,
                     borderRadius: '0 8px 8px 0'
@@ -151,6 +151,7 @@ const Body = ({ auth }) => {
 
                 </nav>
             </Transition>
+            <div>{children}</div>
         </>
     )
 }

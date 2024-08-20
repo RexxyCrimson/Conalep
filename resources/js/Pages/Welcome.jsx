@@ -12,12 +12,23 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome" />
+            
             <Menu>
                 <Menu.Header></Menu.Header>
                 <Menu.Body></Menu.Body>
             </Menu>
-     
+            
             <main className='flex container mx-auto'>
+            <div style={{
+                    flexShrink: 0,
+                    width: '1.5rem',
+                    height: ' 100vh',
+                    backgroundColor: 'rgba(0, 0, 0, .1)',
+                    border: 'solid rgba(0, 0, 0, .15)',
+                    borderWidth: ' 1px 0',
+                    boxShadow: 'inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15)'
+                }}> </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quod veritatis magnam quas. Commodi earum consequuntur ad! Eligendi voluptas soluta quis debitis minima voluptatum, eum excepturi corrupti, laborum error ipsam!</p>
                 <div style={{
                     flexShrink: 0,
                     width: '1.5rem',
@@ -27,19 +38,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     borderWidth: ' 1px 0',
                     boxShadow: 'inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15)'
                 }}> </div>
-
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt iusto aliquid doloremque laborum perspiciatis amet explicabo non, fugiat dolor voluptates enim eius voluptate earum. Fugit illo delectus commodi cumque sed?</p>
-
-                <div style={{
-                    flexShrink: 0,
-                    width: '1.5rem',
-                    height: ' 100vh',
-                    backgroundColor: 'rgba(0, 0, 0, .1)',
-                    border: 'solid rgba(0, 0, 0, .15)',
-                    borderWidth: ' 1px 0',
-                    boxShadow: 'inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15)'
-                }}> </div>
-
             </main >
 
 
