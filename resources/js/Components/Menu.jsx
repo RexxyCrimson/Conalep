@@ -18,7 +18,7 @@ const Menu = ({ children }) => {
 const Header = () => {
     const { open, setOpen } = useContext(MenuContext);
     return (
-        <div className="p-3" style={{ border: 'thin solid black' }}>
+        <div className="p-3 fixed w-full bg-white" style={{ border: 'thin solid black' }}>
             {/* Botón para colocar menú */}
             <button onClick={() => setOpen(true)} >
                 <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">

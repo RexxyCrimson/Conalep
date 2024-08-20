@@ -18,7 +18,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 <Menu.Body></Menu.Body>
             </Menu>
             
-            <main className='flex container mx-auto'>
+            <main className='flex pt-20 container mx-auto'>
             <div style={{
                     flexShrink: 0,
                     width: '1.5rem',
