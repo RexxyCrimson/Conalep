@@ -8,12 +8,8 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     // Auth/Login
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    // Welcome
+    return Inertia::render('Auth/Login');
 });
 
 Route::get('/dashboard', function () {
@@ -27,3 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/canalizar',function(){
+       return Inertia::render('Canalizar') ;
+})->name('canalizar');;

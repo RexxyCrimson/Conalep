@@ -70,6 +70,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Ver tailswindcss para colocar classname y ocuparlo como boostrap
 https://tailwindcss.com/docs/flex
 
+Componentes de tailswindcss
+https://flowbite.com/docs/forms/floating-label/
+
 Colocar para poder instalar react en breeze de Laravel:
 - composer require laravel/breeze --dev 
 - php artisan breeze:install react 

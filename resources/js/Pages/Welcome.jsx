@@ -1,43 +1,24 @@
+import '/resources/css/menu.css';
+
 import { Link, Head } from '@inertiajs/react';
-import Menu from '@/Components/Menu'
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const handleImageError = () => {
-        document.getElementById('screenshot-container')?.classList.add('!hidden');
-        document.getElementById('docs-card')?.classList.add('!row-span-1');
-        document.getElementById('docs-card-content')?.classList.add('!flex-row');
-        document.getElementById('background')?.classList.add('!hidden');
-    };
-
+export default function Welcome() {
+ 
     return (
         <>
             <Head title="Welcome" />
             
-            <Menu>
-                <Menu.Header></Menu.Header>
-                <Menu.Body></Menu.Body>
-            </Menu>
-            
-            <main className='flex pt-20 container mx-auto'>
-            <div style={{
-                    flexShrink: 0,
-                    width: '1.5rem',
-                    height: ' 100vh',
-                    backgroundColor: 'rgba(0, 0, 0, .1)',
-                    border: 'solid rgba(0, 0, 0, .15)',
-                    borderWidth: ' 1px 0',
-                    boxShadow: 'inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15)'
-                }}> </div>
+            <main className='flex container mx-auto'>
+
+            <div className='divider'> </div>
+
+                <div className='px-20 pt-20'>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quod veritatis magnam quas. Commodi earum consequuntur ad! Eligendi voluptas soluta quis debitis minima voluptatum, eum excepturi corrupti, laborum error ipsam!</p>
-                <div style={{
-                    flexShrink: 0,
-                    width: '1.5rem',
-                    height: ' 100vh',
-                    backgroundColor: 'rgba(0, 0, 0, .1)',
-                    border: 'solid rgba(0, 0, 0, .15)',
-                    borderWidth: ' 1px 0',
-                    boxShadow: 'inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15)'
-                }}> </div>
+                
+                </div>
+
+            <div className='divider'> </div>
+
             </main >
 
 
