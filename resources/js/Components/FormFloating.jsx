@@ -11,9 +11,7 @@ const FormFloating = ({ children } ) =>{
 const Input = ({...props}) => {
     return (
         <input {...props} 
-        className=" block px-2.5 pb-2.5 pt-4 w-full text-sm 
-        text-white bg-transparent
-        rounded-lg border-1 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        className="peer p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-65 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:focus:ring-neutral-600" placeholder=" " />
     )
 }
 
@@ -21,14 +19,7 @@ const Label = ({children , ...props}) => {
     return (
         <label 
         {...props}
-        className="absolute text-sm 
-        text-gray-500 dark:text-black
-        duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] 
-        bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 
-        peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 
-        peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 
-        peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 
-        rtl:peer-focus:left-auto start-1">
+        className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
         {children}
         </label>
     )

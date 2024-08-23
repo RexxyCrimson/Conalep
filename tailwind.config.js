@@ -2,6 +2,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
+
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -17,6 +18,8 @@ export default {
             },
         },
     },
+    
+    darkMode: 'class', // Agrega esta línea para habilitar el modo oscuro
 
     plugins: [forms],
 };

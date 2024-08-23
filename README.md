@@ -72,6 +72,7 @@ https://tailwindcss.com/docs/flex
 
 Componentes de tailswindcss
 https://flowbite.com/docs/forms/floating-label/
+https://preline.co/docs/select.html
 
 Colocar para poder instalar react en breeze de Laravel:
 - composer require laravel/breeze --dev 

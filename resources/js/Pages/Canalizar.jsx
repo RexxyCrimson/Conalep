@@ -1,17 +1,13 @@
-import Menu from "@/Components/Menu"
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 import FormFloating from "@/Components/FormFloating";
+import Menu2 from "@/Components/Menu2";
+import SelectFloating from '@/Components/SelectFloating';
 
 const Canalizar = ({ auth }) => {
   return (
-    <Menu user={auth.user} >
-
+    <Menu2 user={auth.user}>
       <Head title="Canalizar alumno" />
-
+    <div className='pt-20' >
       <form >
         {/* onSubmit={submit} */}
 
@@ -33,12 +29,23 @@ const Canalizar = ({ auth }) => {
           <FormFloating.Label htmlFor='fecha'>Fecha</FormFloating.Label>
         </FormFloating>
 
+        <FormFloating>
+          <FormFloating.Input
+            type='text'
+            id='tutor'
+            name="tutor"
+            defaultValue={auth.user.name}
+            disabled
+          />
+          <FormFloating.Label htmlFor='fecha'>Tutor</FormFloating.Label>
+        </FormFloating>
+
+         <SelectFloating></SelectFloating>
 
 
       </form>
-    </Menu>
-
-
+      </div>
+    </Menu2>
   )
 }
 
