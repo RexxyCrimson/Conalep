@@ -1,13 +1,14 @@
 import { Head, Link } from '@inertiajs/react';
-import Menu2 from '@/Components/Menu2';
+import Menu from '@/Components/Menu';
 
 export default function Dashboard({ auth }) {
+    
     return (
 
-        <Menu2 user={auth.user}>
+        <Menu user={auth.user}>
             <Head title="Inicio" />
             <div className='h-screen flex flex-col justify-center items-center'>
-                <div className='flex justify-between gap-32'>
+                <div className='flex justify-between gap-12 sm:gap-32'>
                    
                         <Link
                         href='https://www.facebook.com/CONALEP.Mex'
@@ -43,10 +44,10 @@ export default function Dashboard({ auth }) {
                 </div>
 
                 <div className='mt-16'>
-                    <p className='text-4xl'>“Educación tecnica para la equidad y el bienestar"</p>
+                    <p className='text-center text-4xl'>“Educación tecnica para la equidad y el bienestar"</p>
                 </div>
             </div>
-        </Menu2>
+        </Menu>
 
     );
 }

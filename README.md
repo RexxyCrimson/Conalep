@@ -77,3 +77,8 @@ https://preline.co/docs/select.html
 Colocar para poder instalar react en breeze de Laravel:
 - composer require laravel/breeze --dev 
 - php artisan breeze:install react 
+
+Al realizar una migración de una nueva tabla se puede ejecutar: 
+php artisan migrate --path=/database/migrations/AddHobbyFieldUsersTable
+php artisan migrate
+Esto dejara los datos intactos de la otras tablas

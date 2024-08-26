@@ -5,7 +5,7 @@ export default function MenuLink({ active = false, className = '', children, ...
         <Link
             {...props}
             className={
-                'hover:bg-[#4a4443] flex gap-2 rounded-md py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white '+
+                'hover:bg-[#4a4443] flex gap-2 rounded-md py-2 ring-1 ring-transparent transition  focus:outline-none focus-visible:ring-[#FF2D20] text-white hover:text-white/80 focus-visible:ring-white '+
                 (active
                     ? 'bg-[#4a4443] '
                     : '') +

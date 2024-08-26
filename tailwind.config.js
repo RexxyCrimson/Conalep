@@ -19,7 +19,7 @@ export default {
         },
     },
     
-    darkMode: 'class', // Agrega esta línea para habilitar el modo oscuro
+    darkMode: 'selector', // Agrega esta línea para habilitar el modo oscuro
 
     plugins: [forms],
 };
