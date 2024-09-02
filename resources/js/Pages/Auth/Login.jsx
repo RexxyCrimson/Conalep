@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import LinkSecondary from '@/Components/LinkSecondary';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -85,6 +86,9 @@ export default function Login({ status, canResetPassword }) {
                 <PrimaryButton style={{height:'50px', fontSize:'16px'}} className="mt-2 w-full" disabled={processing}>
                         Iniciar sesión
                 </PrimaryButton>
+                <LinkSecondary style={{height:'50px', fontSize:'16px'}} className="inline-flex items-center justify-center px-4 py-2 bg-white dark:bg-[#222225] border border-gray-300 dark:border-none rounded-md font-semibold text-xs text-gray-700 dark:text-white uppercase tracking-widest shadow-sm hover:bg-gray-200 dark:hover:bg-[#3F4045] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150 mt-2 w-full" href={route('register')} >
+                        Crear cuenta
+                </LinkSecondary>
             </form>
         </GuestLayout>
     );

@@ -15,14 +15,17 @@ return new class extends Migration
             $table->id('folio');
             $table->date('fecha')->nullable(false);
             $table->string('tutor')->nullable(false);
-            $table->string('alumno')->nullable(false);
-            $table->string('matricula')->nullable(false);
+            $table->string('alumno');
+            $table->foreignId('matricula');
             $table->string('turno')->nullable(false);
             $table->string('carrera')->nullable(false);
             $table->string('grupo')->nullable(false);
             $table->string('modulo')->nullable(false);
             $table->string('descripcion_problema')->nullable(false);
             $table->string('clasificacion_problematica')->nullable(false);
+
+
+            $table->foreign('matricula')->references('matricula')->on('alumnos')->onDelete('cascade');
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formularios_canalizacion');
+        //
     }
 };

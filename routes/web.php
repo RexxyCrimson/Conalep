@@ -8,8 +8,6 @@ use Inertia\Inertia;
 
 
 Route::get('/', function () {
-    // Auth/Login
-    // Welcome
     return Inertia::render('Auth/Login');
 });
 
@@ -30,7 +28,6 @@ Route::name('canalizar.')->group(function () {
     Route::get(
         '/canalizar',
         [FormularioCanalizacionController::class, 'create']
-        // Route asignada "canalizar.canalizar"
     )->name('canalizar');
 
     Route::post('/post', 

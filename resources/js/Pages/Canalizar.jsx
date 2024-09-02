@@ -4,11 +4,14 @@ import Menu from "@/Components/Menu";
 import SelectFloating from '@/Components/SelectFloating';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextAreaFloating from '@/Components/TextAreaFloating';
+import { useEffect, useState } from 'react';
+import InputError from '@/Components/InputError';
 
-const Canalizar = ({ auth }) => {
+
+const Canalizar = ({ auth, alumnos }) => {
   const { data, setData, post, processing, errors, reset } = useForm({
-    fecha: Date(),
-    tutor: auth.user.name,
+    fecha: new Date().toISOString().slice(0,10),
+    tutor: auth.user.name  ?? '',
     alumno: '',
     matricula: '',
     turno: '',
@@ -19,11 +22,41 @@ const Canalizar = ({ auth }) => {
     clasificacion_problematica: ''
   });
 
+
+  const cambiarValores = (e) => {
+    const alumnoElegido = e.target.value;
+    data.alumno = alumnoElegido;
+
+    const alumno = alumnosAll.find(item => item.nombre === alumnoElegido);
+    valoresCambiar(alumno ?? "");
+  }
+
+  const valoresCambiar = (alumno) => {
+    setData((prevData) => ({
+      ...prevData,
+      matricula: alumno.matricula ?? '',
+      turno: alumno.turno ?? '',
+      carrera: alumno.carrera ?? '',
+      grupo: alumno.grupo ?? '',
+    }));
+  }
+
+  const [alumnosAll, setAlumnosAll] = useState([]);
+
+  const _getAllAlumnos = () => {
+    setAlumnosAll(alumnos);
+  }
+
+
   const submit = (e) => {
     e.preventDefault();
 
-    post(route('canalizar.post'), );
-};
+    post(route('canalizar.post'), { onSuccess: () => reset() });
+  };
+
+  useEffect(() => {
+    _getAllAlumnos();
+  })
 
 
   return (
@@ -48,10 +81,12 @@ const Canalizar = ({ auth }) => {
               type='date'
               id='fecha'
               name="fecha"
+              data-date-format="DD-MM-YYYY"
               value={data.fecha}
               onChange={(e) => setData('fecha', e.target.value)}
             />
             <FormFloating.Label htmlFor='fecha'>Fecha</FormFloating.Label>
+            <InputError message={errors.fecha} className="pl-1 mt-2" />
           </FormFloating>
 
           <FormFloating>
@@ -68,19 +103,27 @@ const Canalizar = ({ auth }) => {
           <SelectFloating>
             <SelectFloating.Selected
               id='alumno'
-              name="alumo"
+              name="alumno"
               value={data.alumno}
-              onChange={(e) => setData('alumno', e.target.value)}
+              onChange={(e) => cambiarValores(e)}
             >
-              <option defaultValue="hola">Alumno</option>
-              <option>Jael Pineda Quiroz</option>
-              <option>Juan Perez Perez</option>
+              <option value="">Alumno</option>
+              {
+                alumnosAll.map(
+                  (alumno) => {
+                    return (
+                      <option key={alumno.nombre} value={alumno.nombre}>{alumno.nombre}</option>
+                    )
+                  }
+                )
+              }
             </SelectFloating.Selected>
             <SelectFloating.Label
               htmlFor='alumno'
             >
               Alumno
             </SelectFloating.Label>
+            <InputError message={errors.alumno} className="pl-1 mt-2" />
           </SelectFloating>
 
           <FormFloating>
@@ -90,7 +133,7 @@ const Canalizar = ({ auth }) => {
               name="matricula"
               disabled
               value={data.matricula}
-              onChange={(e) => setData('matricula', e.target.value)}
+              readOnly={true}
             />
             <FormFloating.Label htmlFor='matricula'>Matricula</FormFloating.Label>
           </FormFloating>
@@ -102,7 +145,7 @@ const Canalizar = ({ auth }) => {
               name="turno"
               disabled
               value={data.turno}
-              onChange={(e) => setData('turno', e.target.value)}
+              readOnly={true}
             />
             <FormFloating.Label htmlFor='turno'>Turno</FormFloating.Label>
           </FormFloating>
@@ -114,7 +157,7 @@ const Canalizar = ({ auth }) => {
               name="carrera"
               disabled
               value={data.carrera}
-              onChange={(e) => setData('carrera', e.target.value)}
+              readOnly={true}
             />
             <FormFloating.Label htmlFor='carrera'>Carrera</FormFloating.Label>
           </FormFloating>
@@ -126,7 +169,7 @@ const Canalizar = ({ auth }) => {
               name="grupo"
               disabled
               value={data.grupo}
-              onChange={(e) => setData('grupo', e.target.value)}
+              readOnly={true}
             />
             <FormFloating.Label htmlFor='grupo'>Grupo</FormFloating.Label>
           </FormFloating>

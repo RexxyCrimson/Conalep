@@ -82,3 +82,10 @@ Al realizar una migración de una nueva tabla se puede ejecutar:
 php artisan migrate --path=/database/migrations/AddHobbyFieldUsersTable
 php artisan migrate
 Esto dejara los datos intactos de la otras tablas
+
+Crear migraciones 
+php artisan make:migration nombre_de_migración (plural) para crear la tabla
+Crear controlador
+php artisan make:controller nombre_del_controlador (singular) para insertar, borrar o actualizar datos de la tabla
+Crear modelos 
+php artisan make:model nombre_del_modelo (singular) para crear las relaciones de la tabla
