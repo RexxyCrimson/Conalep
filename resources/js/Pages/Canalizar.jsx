@@ -9,6 +9,7 @@ import InputError from '@/Components/InputError';
 
 
 const Canalizar = ({ auth, alumnos }) => {
+  const [alumnosAll, setAlumnosAll] = useState([]);
   const { data, setData, post, processing, errors, reset } = useForm({
     fecha: new Date().toISOString().slice(0,10),
     tutor: auth.user.name  ?? '',
@@ -40,8 +41,6 @@ const Canalizar = ({ auth, alumnos }) => {
       grupo: alumno.grupo ?? '',
     }));
   }
-
-  const [alumnosAll, setAlumnosAll] = useState([]);
 
   const _getAllAlumnos = () => {
     setAlumnosAll(alumnos);
