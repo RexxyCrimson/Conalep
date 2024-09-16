@@ -31,13 +31,15 @@ Route::name('canalizar.')->group(function () {
         [FormularioCanalizacionController::class, 'create']
     )->name('canalizar');
 
-    Route::post('/post', 
-    [FormularioCanalizacionController::class, 'store'])
-     // Route assigned name "canalizar.mandarDatos"
-    ->name('post');
+    Route::post(
+        '/post',
+        [FormularioCanalizacionController::class, 'store']
+    )
+        // Route assigned name "canalizar.mandarDatos"
+        ->name('post');
 });
 
-Route::name('alumnos.') -> group(function(): void {
+Route::name('alumnos.')->group(function (): void {
     Route::get(
         '/getAlumnos/{nombre}',
         [AlumnoController::class, 'getAlumnos']

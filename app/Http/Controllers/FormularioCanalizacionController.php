@@ -23,10 +23,7 @@ class FormularioCanalizacionController extends Controller
 
     public function create()
     {
-       $alumnos = Alumno::take(4)->get();
-        return  Inertia::render('Canalizar',[
-            'alumnos'=> $alumnos
-        ]);
+        return  Inertia::render('Canalizar');
     }
     
     public function store(Request $request): RedirectResponse

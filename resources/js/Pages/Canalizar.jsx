@@ -10,8 +10,7 @@ import InputAutocomplit from '@/Components/InputAutocomplit';
 import axios from 'axios';
 
 
-const Canalizar = ({ auth, alumnos }) => {
-  const memoizedPreloadedData = useMemo(() => alumnos);
+const Canalizar = ({ auth }) => {
   const [alumnosAll, setAlumnosAll] = useState([])
   const { data, setData, post, processing, errors, reset } = useForm({
     fecha: new Date().toISOString().slice(0,10),
@@ -27,7 +26,7 @@ const Canalizar = ({ auth, alumnos }) => {
   });
 
   const _getAlumnos = async(alumno)=>{
-    if(alumno !== ''){
+    if(alumno.trim() !== ''){
       const response = await axios.get(route('alumnos.getAlumnos', [alumno]));
       setAlumnosAll(response.data);
       console.log(response.data);
@@ -53,15 +52,6 @@ const Canalizar = ({ auth, alumnos }) => {
       grupo: alumno.grupo ?? '',
     }));
   }
-
-  const _getAllAlumnos = () => {
-    setAlumnosAll(alumnos);
-  }
-
-  useEffect(() => {
-    _getAllAlumnos();
-  }, memoizedPreloadedData);
-
 
   const submit = (e) => {
     e.preventDefault();
