@@ -23,12 +23,12 @@ class FormularioCanalizacionController extends Controller
 
     public function create()
     {
-       $alumnos = Alumno::all();
+       $alumnos = Alumno::take(4)->get();
         return  Inertia::render('Canalizar',[
             'alumnos'=> $alumnos
         ]);
     }
-
+    
     public function store(Request $request): RedirectResponse
     {
         $request->validate( $this -> rules, $this -> errorMessages);

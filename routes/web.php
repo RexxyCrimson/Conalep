@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\FormularioCanalizacionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -34,6 +35,13 @@ Route::name('canalizar.')->group(function () {
     [FormularioCanalizacionController::class, 'store'])
      // Route assigned name "canalizar.mandarDatos"
     ->name('post');
+});
+
+Route::name('alumnos.') -> group(function(): void {
+    Route::get(
+        '/getAlumnos/{nombre}',
+        [AlumnoController::class, 'getAlumnos']
+    )->name('getAlumnos');
 });
 
 

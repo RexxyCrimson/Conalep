@@ -4,12 +4,15 @@ import Menu from "@/Components/Menu";
 import SelectFloating from '@/Components/SelectFloating';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextAreaFloating from '@/Components/TextAreaFloating';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import InputError from '@/Components/InputError';
+import InputAutocomplit from '@/Components/InputAutocomplit';
+import axios from 'axios';
 
 
 const Canalizar = ({ auth, alumnos }) => {
-  const [alumnosAll, setAlumnosAll] = useState([]);
+  const memoizedPreloadedData = useMemo(() => alumnos);
+  const [alumnosAll, setAlumnosAll] = useState([])
   const { data, setData, post, processing, errors, reset } = useForm({
     fecha: new Date().toISOString().slice(0,10),
     tutor: auth.user.name  ?? '',
@@ -23,12 +26,21 @@ const Canalizar = ({ auth, alumnos }) => {
     clasificacion_problematica: ''
   });
 
+  const _getAlumnos = async(alumno)=>{
+    if(alumno !== ''){
+      const response = await axios.get(route('alumnos.getAlumnos', [alumno]));
+      setAlumnosAll(response.data);
+      console.log(response.data);
+    }
+  }
 
   const cambiarValores = (e) => {
     const alumnoElegido = e.target.value;
     data.alumno = alumnoElegido;
-
-    const alumno = alumnosAll.find(item => item.nombre === alumnoElegido);
+    let alumno = alumnosAll.find(item => item.nombre === alumnoElegido) ?? null;
+    if(alumno == null){
+      _getAlumnos(data.alumno);
+    }
     valoresCambiar(alumno ?? "");
   }
 
@@ -46,17 +58,15 @@ const Canalizar = ({ auth, alumnos }) => {
     setAlumnosAll(alumnos);
   }
 
+  useEffect(() => {
+    _getAllAlumnos();
+  }, memoizedPreloadedData);
+
 
   const submit = (e) => {
     e.preventDefault();
-
     post(route('canalizar.post'), { onSuccess: () => reset() });
   };
-
-  useEffect(() => {
-    _getAllAlumnos();
-  })
-
 
   return (
     <Menu user={auth.user}>
@@ -99,31 +109,28 @@ const Canalizar = ({ auth, alumnos }) => {
             <FormFloating.Label htmlFor='tutor'>Tutor</FormFloating.Label>
           </FormFloating>
 
-          <SelectFloating>
-            <SelectFloating.Selected
-              id='alumno'
-              name="alumno"
-              value={data.alumno}
-              onChange={(e) => cambiarValores(e)}
-            >
-              <option value="">Alumno</option>
-              {
+          <InputAutocomplit>
+            <InputAutocomplit.Input 
+             id='alumno'
+             name='alumno'
+             list='alumnoList'
+             value={data.alumno}
+             onChange={(e) => cambiarValores(e)}
+            />
+        
+             <InputAutocomplit.Select id='alumnoList'>
+             {
                 alumnosAll.map(
                   (alumno) => {
                     return (
-                      <option key={alumno.nombre} value={alumno.nombre}>{alumno.nombre}</option>
+                      <option key={alumno.nombre} value={alumno.nombre}></option>
                     )
                   }
                 )
               }
-            </SelectFloating.Selected>
-            <SelectFloating.Label
-              htmlFor='alumno'
-            >
-              Alumno
-            </SelectFloating.Label>
-            <InputError message={errors.alumno} className="pl-1 mt-2" />
-          </SelectFloating>
+             </InputAutocomplit.Select>
+            <InputAutocomplit.Label htmlFor='alumno'>Alumno</InputAutocomplit.Label>
+          </InputAutocomplit>
 
           <FormFloating>
             <FormFloating.Input

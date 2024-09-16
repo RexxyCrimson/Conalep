@@ -7,11 +7,10 @@ const FormFloating = ({ children } ) =>{
     )
 }
 
-
 const Input = ({...props}) => {
     return (
         <input {...props} 
-        className="peer p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-65 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:focus:ring-neutral-600" placeholder=" " />
+        className="form-control peer p-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-65 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:focus:ring-neutral-600" placeholder=" " />
     )
 }
 
