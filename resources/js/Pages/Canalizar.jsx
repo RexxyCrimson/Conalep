@@ -208,6 +208,7 @@ const Canalizar = ({ auth }) => {
             >
               Descripción de la problematica
             </TextAreaFloating.Label>
+            <InputError message={errors.descripcion_problema} className='mt-2 pl-1'></InputError>
           </TextAreaFloating>
 
           <SelectFloating>
