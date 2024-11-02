@@ -97,6 +97,7 @@ const Canalizar = ({ auth }) => {
               value={data.tutor}
             />
             <FormFloating.Label htmlFor='tutor'>Tutor</FormFloating.Label>
+            <InputError message={errors.tutor} className="pl-1 mt-2" />
           </FormFloating>
 
           <InputAutocomplit>
